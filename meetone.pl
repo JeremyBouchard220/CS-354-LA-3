@@ -6,7 +6,7 @@
 lte(time(_,_,am),time(_,_,pm)).
 
 % Checks the hours for each person to see if different.
-lte(time(FirstHour,_Id),time(SecondHour,_,Id)) :-
+lte(time(FirstHour,_,Id),time(SecondHour,_,Id)) :-
 		FirstHour<SecondHour.
 
 % Check minutes for each person to see if different.
