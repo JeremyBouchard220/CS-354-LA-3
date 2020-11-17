@@ -27,28 +27,30 @@ match(slot(FirstBegin,FirstEnd),slot(SecondBegin,SecondEnd),slot(SecondBegin,Sec
     lte(SecondEnd,FirstEnd),
     SecondBegin\==SecondEnd.
 
-match(slot(FirstBegin,FirstEnd),slot(SecondBegin,SecondEnd),slot(SecondBegin,SecondEnd)) :-
+match(slot(FirstBegin,FirstEnd),slot(SecondBegin,SecondEnd),slot(SecondBegin,FirstEnd)) :-
     lte(FirstBegin,SecondBegin),
     lte(SecondBegin,FirstEnd),
     lte(FirstEnd,SecondEnd),
-    SeconBegin\==FirstEnd.
+    SecondBegin\==FirstEnd.
 
 %asdf
 meetCheck(FirstSlot,SecondSlot,MeetingSlot) :-
     match(FirstSlot,SecondSlot,MeetingSlot).
 
 meetCheck(FirstSlot,SecondSlot,MeetingSlot) :-
-    match(SecondSlot,FirstSlot,MeetingSlto).
+    match(SecondSlot,FirstSlot,MeetingSlot).
 
 %asdf
 meetCollect([Second|Tail],FirstSlot,Slot) :-
     free(Second,SecondSlot),
     meetCheck(FirstSlot,SecondSlot,Slot0),
     meetCollect(Tail,Slot0,Slot).
+    
+meetCollect([],Slot,Slot).
 
 %asdf
 meetTimes([First|Tail],Slot) :-
-    free(Second,SecondSlot),
+    free(First,FirstSlot),
     meetCollect(Tail,FirstSlot,Slot).
 
 %asdf
@@ -56,7 +58,7 @@ meet(Slot) :-
     people(People),
     meetTimes(People,Slot).
 
-people([ann,bob,carla]).
+people([bob,jeremy,carla]).
 
 main :- findall(Slot, meet(Slot), Slots),
         uniq(Slots, Uniq),

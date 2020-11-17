@@ -14,3 +14,8 @@ free(dave,slot(time(8,0,am),time(9,0,am))).
 free(dave,slot(time(10,0,am),time(11,0,am))).
 
 free(ed,slot(time(9,0,am),time(10,0,am))).
+
+free(jeremy,slot(time(7,0,am),time(7,45,am))).
+free(jeremy,slot(time(8,30,am),time(11,45,am))).
+free(jeremy,slot(time(5,0,pm),time(7,0,pm))).
+free(jeremy,slot(time(8,0,pm),time(9,0,pm))).
